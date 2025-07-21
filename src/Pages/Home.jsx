@@ -1,7 +1,7 @@
 import React from 'react';
-import HeroSection from '../components/HeroSection';
+import HeroSection from '../Components/HeroSection';
 import TryServiceSection from '../Components/TryServiceSection';
-import Footer from '../components/Footer';
+import Footer from '../Components/Footer';
 
 const Home = () => {
   return (
