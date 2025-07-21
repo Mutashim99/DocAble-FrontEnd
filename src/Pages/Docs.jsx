@@ -11,7 +11,7 @@ const Docs = () => {
     }
   };
 
-  const invoiceJSON = `{
+const invoiceJSON = `{
   "companyName": "string",
   "companyStreet": "string",
   "companyCityZip": "string",
@@ -61,105 +61,99 @@ const Docs = () => {
   "signatureTitle": "string"
 }`;
 
-  const responseExample = `// Response: application/pdf
-// Returns a binary stream (PDF file)
-// Example in JavaScript:
-
-const blob = await response.blob();
+  const responseExample = `const blob = await response.blob();
 const url = URL.createObjectURL(blob);
-window.open(url); // or trigger a download
-`;
+window.open(url); // or trigger download`;
 
   const endpointInfo = `POST /api/pdf/generate/{template}
 
 Available templates:
 - invoice
-- letter
-
-Example:
-POST https://localhost:7053/api/pdf/generate/invoice`;
+- letter`;
 
   return (
-    <section className="min-h-screen bg-[#0f172a] text-white px-6 py-16">
-      <div className="max-w-4xl mx-auto space-y-14">
-
-        {/* Header */}
+    <section className="min-h-screen bg-gradient-to-b from-black via-neutral-900 to-black text-white pt-28  md:px-12 lg:px-20 px-6 py-20">
+      <div className="max-w-5xl mx-auto space-y-16">
+        
+        {/* Title */}
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-2">📄 Docify API Documentation</h1>
-          <p className="text-gray-400 text-lg">Everything you need to start using Docify PDF Generator</p>
+          <h1 className="text-4xl font-bold text-white mb-3">📄 Docable API Documentation</h1>
+          <p className="text-gray-400 text-lg">
+            Everything you need to generate beautiful PDFs from JSON using Docable.
+          </p>
         </div>
 
-        {/* Getting Started */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-4">🚀 Getting Started</h2>
-          <p className="text-gray-300 mb-2">
-            Docify is a simple JSON-to-PDF API. Select a template, send the required JSON, and get a styled PDF in return.
+        {/* How It Works */}
+        <div className="space-y-3">
+          <h2 className="text-2xl font-semibold text-white">🚀 How It Works</h2>
+          <p className="text-gray-300">
+            Docable is a developer-friendly PDF generator API. Just pick a template, send structured JSON, and get a polished PDF in return.
           </p>
           <ul className="list-disc list-inside text-gray-300 space-y-1">
-            <li>Make a <code className="text-green-400">POST</code> request to the desired template endpoint</li>
-            <li>Send JSON as request body</li>
-            <li>Receive a PDF file as response</li>
+            <li>Send a <code className="text-green-400">POST</code> request to the template endpoint</li>
+            <li>Include required JSON in the body</li>
+            <li>Receive a downloadable PDF file</li>
           </ul>
         </div>
 
-        {/* Template: Invoice */}
+        {/* Endpoint Info */}
         <div>
-          <h2 className="text-2xl font-semibold mb-4">🧾 Invoice Template JSON</h2>
-          <div className="relative bg-[#1e293b] border border-gray-700 rounded p-4 text-sm text-green-300 overflow-x-auto">
-            <pre>{invoiceJSON}</pre>
-            <button
-              onClick={() => copyToClipboard(invoiceJSON)}
-              className="absolute top-3 right-3 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 text-xs rounded"
-            >
-              Copy
-            </button>
-          </div>
+          <h2 className="text-2xl font-semibold mb-4">🌐 API Endpoint</h2>
+          <CodeBlock
+            code={endpointInfo}
+            language="bash"
+            onCopy={() => copyToClipboard(endpointInfo)}
+          />
         </div>
 
-        {/* Template: Letter */}
+        {/* Invoice JSON */}
         <div>
-          <h2 className="text-2xl font-semibold mb-4">✉️ Letter Template JSON</h2>
-          <div className="relative bg-[#1e293b] border border-gray-700 rounded p-4 text-sm text-yellow-300 overflow-x-auto">
-            <pre>{letterJSON}</pre>
-            <button
-              onClick={() => copyToClipboard(letterJSON)}
-              className="absolute top-3 right-3 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 text-xs rounded"
-            >
-              Copy
-            </button>
-          </div>
+          <h2 className="text-2xl font-semibold mb-4">🧾 Invoice Template</h2>
+          <CodeBlock
+            code={invoiceJSON}
+            language="json"
+            onCopy={() => copyToClipboard(invoiceJSON)}
+            color="text-green-300"
+          />
         </div>
 
-        {/* Endpoints */}
+        {/* Letter JSON */}
         <div>
-          <h2 className="text-2xl font-semibold mb-4">🌐 API Endpoints</h2>
-          <div className="relative bg-[#1e293b] border border-gray-700 rounded p-4 text-sm text-blue-300 overflow-x-auto">
-            <pre>{endpointInfo}</pre>
-            <button
-              onClick={() => copyToClipboard(endpointInfo)}
-              className="absolute top-3 right-3 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 text-xs rounded"
-            >
-              Copy
-            </button>
-          </div>
+          <h2 className="text-2xl font-semibold mb-4">✉️ Letter Template</h2>
+          <CodeBlock
+            code={letterJSON}
+            language="json"
+            onCopy={() => copyToClipboard(letterJSON)}
+            color="text-green-300"
+          />
         </div>
 
-        {/* Response Info */}
+        {/* Response Handling */}
         <div>
-          <h2 className="text-2xl font-semibold mb-4">📦 Response Handling</h2>
-          <div className="relative bg-[#1e293b] border border-gray-700 rounded p-4 text-sm text-gray-300 overflow-x-auto">
-            <pre>{responseExample}</pre>
-            <button
-              onClick={() => copyToClipboard(responseExample)}
-              className="absolute top-3 right-3 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 text-xs rounded"
-            >
-              Copy
-            </button>
-          </div>
+          <h2 className="text-2xl font-semibold mb-4">📦 Handling PDF Response</h2>
+          <CodeBlock
+            code={responseExample}
+            language="js"
+            onCopy={() => copyToClipboard(responseExample)}
+          />
         </div>
-
       </div>
     </section>
+  );
+};
+
+// Reusable component for all code blocks
+const CodeBlock = ({ code, language = "json", onCopy, color = "text-gray-300" }) => {
+  return (
+    <div className={`relative bg-[#1a1a1a] border border-neutral-800 rounded-lg  shadow-xl overflow-auto font-mono p-4 text-sm ${color} overflow-x-auto`}>
+      <pre className="whitespace-pre-wrap">{code}</pre>
+      <button
+        onClick={onCopy}
+        className="absolute top-3 right-3 bg-blue-600 hover:bg-blue-700 text-white text-xs px-3 py-1 rounded shadow"
+      >
+        Copy
+      </button>
+    </div>
   );
 };
 

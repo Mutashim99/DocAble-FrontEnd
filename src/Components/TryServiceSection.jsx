@@ -63,12 +63,7 @@ const TryServiceSection = () => {
     const newTemplate = e.target.value;
     setSelectedTemplate(newTemplate);
 
-    // Update prefilled JSON
-    if (newTemplate === "invoice") {
-      setJsonInput(invoiceJson);
-    } else if (newTemplate === "letter") {
-      setJsonInput(letterJson);
-    }
+    setJsonInput(newTemplate === "invoice" ? invoiceJson : letterJson);
   };
 
   const handleGeneratePDF = async () => {
@@ -93,7 +88,7 @@ const TryServiceSection = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(parsedJson), // ✅ Fixed here
+          body: JSON.stringify(parsedJson),
         }
       );
 
@@ -109,44 +104,49 @@ const TryServiceSection = () => {
   };
 
   return (
-    <section className="py-20 px-6 bg-[#111827] text-white">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-        Try Our Service
+    <section className="bg-gradient-to-b from-black via-neutral-900 to-black text-white py-28 px-6 md:px-12 lg:px-20">
+      <h2 id="GeneratePDF" className="text-4xl md:text-5xl font-bold text-center mb-14 tracking-tight">
+        Try Docable Live
       </h2>
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
         {/* Left: JSON + Template Selection */}
-        <div>
-          <label className="block mb-2 font-medium">JSON Input</label>
+        <div className="flex flex-col">
+          <label  className="block mb-2 font-medium text-sm text-gray-300">
+            JSON Input
+          </label>
           <textarea
             rows="18"
             value={jsonInput}
             onChange={(e) => setJsonInput(e.target.value)}
-            className="w-full p-4 text-sm bg-[#1f2937] text-white border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+            className="w-full p-4 text-sm bg-[#1a1a1a] border border-neutral-800 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-600 placeholder:text-gray-500"
           ></textarea>
 
-          <label className="block mt-4 mb-2 font-medium">Select Template</label>
+          <label className="block mt-6 mb-2 font-medium text-sm text-gray-300">
+            Select Template
+          </label>
           <select
             value={selectedTemplate}
             onChange={handleTemplateChange}
-            className="w-full p-3 bg-[#1f2937] text-white border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 bg-[#1a1a1a] border border-neutral-800 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
           >
             <option value="invoice">Invoice</option>
             <option value="letter">Letter</option>
           </select>
 
           {error && (
-            <div className="mt-4 bg-red-600/20 text-red-400 px-4 py-2 rounded border border-red-500 text-sm">
+            <div className="mt-4 bg-red-500/10 text-red-400 px-4 py-2 rounded-md border border-red-600 text-sm">
               {error}
             </div>
           )}
 
           <button
+          
             onClick={handleGeneratePDF}
             disabled={loading}
-            className={`mt-6 px-6 py-3 rounded font-semibold transition ${
+            className={`mt-6 px-6 py-3 rounded-md font-semibold text-black transition duration-150 ${
               loading
-                ? "bg-blue-800 cursor-not-allowed"
-                : "bg-blue-600 hover:bg-blue-700"
+                ? " bg-white cursor-not-allowed"
+                : " bg-white hover:bg-gray-200"
             }`}
           >
             {loading ? "Generating..." : "Generate PDF"}
@@ -164,7 +164,7 @@ const TryServiceSection = () => {
         </div>
 
         {/* Right: Preview */}
-        <div className="bg-[#1f2937] border border-gray-600 rounded overflow-hidden h-[600px]">
+        <div className="bg-[#1a1a1a] border border-neutral-800 rounded-lg overflow-hidden h-[600px] shadow-lg">
           {pdfBlobUrl ? (
             <iframe
               src={pdfBlobUrl}
@@ -172,8 +172,8 @@ const TryServiceSection = () => {
               className="w-full h-full border-none"
             ></iframe>
           ) : (
-            <div className="flex items-center justify-center h-full text-gray-400 text-sm text-center px-4">
-              PDF Preview will appear here once generated
+            <div className="flex items-center justify-center h-full text-gray-500 text-sm text-center px-4">
+              PDF preview will appear here once generated.
             </div>
           )}
         </div>

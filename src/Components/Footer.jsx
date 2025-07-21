@@ -3,32 +3,36 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0f172a] text-gray-400 py-10 px-6 mt-20">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+    <footer className="bg-black text-gray-400 px-6 py-16 border-t border-neutral-800 ">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
         {/* Left: Brand Summary */}
         <div>
-          <h2 className="text-white text-xl font-semibold">Docify</h2>
-          <p className="mt-2 text-sm">
+          <h2 className="text-white text-2xl font-semibold tracking-tight">Docable</h2>
+          <p className="mt-3 text-sm leading-relaxed text-gray-400">
             Generate clean, professional PDFs from structured JSON using customizable templates.
           </p>
         </div>
 
         {/* Middle: Quick Links */}
         <div>
-          <h3 className="text-white font-semibold mb-2">Quick Links</h3>
-          <ul className="space-y-1 text-sm">
+          <h3 className="text-white text-lg font-semibold mb-3">Quick Links</h3>
+          <ul className="space-y-2 text-sm">
             <li>
-              <Link to="/" className="hover:text-white transition">Home</Link>
+              <Link to="/" className="hover:text-white transition-colors duration-200">
+                Home
+              </Link>
             </li>
             <li>
-              <Link to="/docs" className="hover:text-white transition">Docs</Link>
+              <Link to="/docs" className="hover:text-white transition-colors duration-200">
+                Docs
+              </Link>
             </li>
             <li>
               <a
                 href="https://github.com/your-repo-url"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white transition"
+                className="hover:text-white transition-colors duration-200"
               >
                 GitHub
               </a>
@@ -36,15 +40,15 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Right: Contact (optional or placeholder) */}
+        {/* Right: Contact Info */}
         <div>
-          <h3 className="text-white font-semibold mb-2">Contact</h3>
-          <p className="text-sm">docify.support@example.com</p>
+          <h3 className="text-white text-lg font-semibold mb-3">Contact</h3>
+          <p className="text-sm text-gray-400">mutashimmohsin@gmail.com</p>
         </div>
       </div>
 
-      <div className="mt-10 text-center text-xs border-t border-gray-700 pt-6">
-        © {new Date().getFullYear()} Docify. All rights reserved.
+      <div className="mt-14 text-center text-xs text-gray-600 border-t border-neutral-800 pt-6">
+        © {new Date().getFullYear()} Docable. All rights reserved.
       </div>
     </footer>
   );
