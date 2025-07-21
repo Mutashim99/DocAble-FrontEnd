@@ -87,7 +87,7 @@ const TryServiceSection = () => {
       }
 
       const response = await fetch(
-        `https://localhost:7053/api/pdf/generate/${selectedTemplate}`,
+        `https://docable.azurewebsites.net/api/pdf/generate/${selectedTemplate}`,
         {
           method: "POST",
           headers: {
