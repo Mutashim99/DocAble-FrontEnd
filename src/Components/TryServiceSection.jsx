@@ -1,56 +1,79 @@
 import React, { useState } from "react";
 
 const invoiceJson = `{
-  "companyName": "string",
-  "companyStreet": "string",
-  "companyCityZip": "string",
-  "companyPhone": "string",
-  "companyFax": "string",
-  "companyWebsite": "string",
-  "invoiceDate": "string",
-  "invoiceNumber": "string",
-  "customerId": "string",
-  "dueDate": "string",
-  "clientName": "string",
-  "clientCompany": "string",
-  "clientStreet": "string",
-  "clientCityZip": "string",
-  "clientPhone": "string",
+  "companyName": "Mutashim Mohsin",
+  "companyStreet": "123 Software Lane",
+  "companyCityZip": "Karachi, 74000",
+  "companyPhone": "+92 300 1234567",
+  "companyFax": "+92 21 9876543",
+  "companyWebsite": "www.mutashim.com",
+  "invoiceDate": "2025-07-21",
+  "invoiceNumber": "INV-20250721-001",
+  "customerId": "CUST-00001",
+  "dueDate": "2025-08-05",
+  "clientName": "John Doe",
+  "clientCompany": "Doe Enterprises",
+  "clientStreet": "456 Startup Blvd",
+  "clientCityZip": "Islamabad, 44000",
+  "clientPhone": "+92 333 6547890",
   "items": [
     {
-      "description": "string",
+      "description": "Web Application Development",
       "isTaxed": true,
-      "amount": 0
+      "amount": 120000
+    },
+    {
+      "description": "Responsive UI Design",
+      "isTaxed": true,
+      "amount": 30000
+    },
+    {
+      "description": "API Integration Services",
+      "isTaxed": true,
+      "amount": 20000
+    },
+    {
+      "description": "3 Months Maintenance",
+      "isTaxed": false,
+      "amount": 15000
+    },
+    {
+      "description": "Deployment & Hosting Setup",
+      "isTaxed": false,
+      "amount": 5000
     }
   ],
-  "subtotal": 0,
-  "taxableAmount": 0,
-  "taxRate": 0,
-  "taxDue": 0,
-  "otherCharges": 0,
-  "total": 0,
+  "subtotal": 190000,
+  "taxableAmount": 170000,
+  "taxRate": 0.13,
+  "taxDue": 22100,
+  "otherCharges": 1000,
+  "total": 213100,
   "otherComments": [
-    "string"
+    "We appreciate your business!",
+    "Kindly clear the payment before the due date.",
+    "For support, feel free to contact us anytime."
   ],
-  "contactInfo": "string"
+  "contactInfo": "Email: contact@mutashim.com | Phone: +92 300 1234567"
 }`;
 
 const letterJson = `{
-  "senderName": "string",
-  "senderTitle": "string",
-  "senderCompany": "string",
-  "senderAddress": "string",
-  "recipientName": "string",
-  "recipientTitle": "string",
-  "recipientCompany": "string",
-  "recipientAddress": "string",
-  "date": "string",
-  "subject": "string",
-  "body": "string",
-  "closing": "string",
-  "signatureName": "string",
-  "signatureTitle": "string"
-}`;
+  "senderName": "Mutashim",
+  "senderTitle": "Software Developer",
+  "senderCompany": "Mutashim Mohsin",
+  "senderAddress": "123 Software Lane, Karachi, 74000",
+  "recipientName": "Hiring Manager",
+  "recipientTitle": "HR Department",
+  "recipientCompany": "XYZ Technologies",
+  "recipientAddress": "456 Innovation Park, Karachi, 54000",
+  "date": "2025-07-21",
+  "subject": "Application for Software Developer Position",
+  "body": "Dear Hiring Manager,\\n\\nI am writing to apply for the Software Developer position at XYZ Technologies. I have experience building full-stack web applications using .NET Core, Entity Framework, React.js, and SQL Server.\\n\\nRecently, I built a PDF generation SaaS API to automate document creation. I enjoy solving real-world problems with clean, efficient code.\\n\\nI’d love the opportunity to contribute to your team and would be happy to discuss further.\\n\\nThank you for considering my application.",
+  "closing": "Sincerely",
+  "signatureName": "Mutashim",
+  "signatureTitle": "Software Developer"
+}
+`;
 
 const TryServiceSection = () => {
   const [selectedTemplate, setSelectedTemplate] = useState("invoice");
